@@ -13,6 +13,7 @@ import { PedidoController }  from './controllers/pedido.controller';
 import { PagamentoController } from './controllers/pagamento.controller';
 import { UsuarioController }   from './controllers/usuario.controller';
 import { LoginUseCase } from '../application/use-cases/auth/login.use-case';
+import { UnidadeController } from './controllers/unidade.controller';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { LoginUseCase } from '../application/use-cases/auth/login.use-case';
     PedidoController,
     PagamentoController,
     UsuarioController,
+    UnidadeController,
   ],
   providers: [
     JwtStrategy,

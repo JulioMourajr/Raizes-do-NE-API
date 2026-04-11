@@ -14,6 +14,7 @@ import { EstoqueRepository } from './repositories/estoque.repository';
 import { ProdutoRepository } from './repositories/produto.repository';
 import { PagamentoMockGateway } from './gateways/pagamentoMockGateway';
 import { AuditLogger }          from './logging/auditLogger';
+import { UnidadeRepository }  from './repositories/unidade.repository';
 
 @Module({
   imports: [
@@ -29,12 +30,14 @@ import { AuditLogger }          from './logging/auditLogger';
     ProdutoRepository,
     PagamentoMockGateway,
     AuditLogger,
+    UnidadeRepository,
   ],
   exports: [
     UsuarioRepository,
     PedidoRepository,
     EstoqueRepository,
     ProdutoRepository,
+    UnidadeRepository,
     PagamentoMockGateway,
     AuditLogger,
   ],
