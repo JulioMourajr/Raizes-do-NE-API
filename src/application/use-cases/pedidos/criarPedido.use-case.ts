@@ -89,7 +89,7 @@ export class CriarPedidoUseCase {
     pedido.canalPedido    = dto.canalPedido;  
     pedido.formaPagamento = dto.formaPagamento;
     pedido.itens          = itensPedido;
-    pedido.idempotencyKey = dto['idempotencyKey'] ?? null;
+    pedido.idempotencyKey = dto.idempotencyKey;
 
     pedido.calcularTotal();
 

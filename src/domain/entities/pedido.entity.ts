@@ -43,7 +43,7 @@ export class Pedido {
 
   // Chave de idempotência — evita pedidos duplicados em caso de retry
   @Column({ name: 'idempotency_key', unique: true, nullable: true })
-  idempotencyKey!: string;
+  idempotencyKey?: string;
 
   @OneToMany(() => ItemPedido, (item) => item.pedido, { cascade: true })
   itens!: ItemPedido[];

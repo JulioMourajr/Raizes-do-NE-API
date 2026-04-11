@@ -40,4 +40,8 @@ export class CriarPedidoDto {
   @IsOptional()
   @IsUUID()
   clienteId?: string;
+
+  @IsOptional()
+  @IsString()
+  idempotencyKey?: string;
 }
