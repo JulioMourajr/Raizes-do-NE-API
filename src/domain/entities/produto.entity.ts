@@ -13,7 +13,7 @@ export class Produto {
   @Column({ type: 'text', nullable: true })
   descricao!: string;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2, transformer: { to: (v: number) => v, from: (v: string) => parseFloat(v) } })
   preco!: number;
 
   @Column({ length: 80 })

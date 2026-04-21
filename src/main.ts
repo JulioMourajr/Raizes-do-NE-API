@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { UnprocessableEntityException, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { GlobalExceptionFilter } from './api/middlewares/httpException.filter';
@@ -9,9 +9,18 @@ async function bootstrap() {
 
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,       
-      forbidNonWhitelisted: true, 
-      transform: true,
+      whitelist:            true,
+      forbidNonWhitelisted: true,
+      transform:            true,
+      exceptionFactory: (errors) =>
+        new UnprocessableEntityException({
+          error:   'VALIDACAO_INVALIDA',
+          message: 'Dados de entrada inválidos.',
+          details: errors.map((e) => ({
+            field: e.property,
+            issue: Object.values(e.constraints ?? {}).join(', '),
+          })),
+        }),
     }),
   );
   app.useGlobalFilters(new GlobalExceptionFilter());

@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { Roles }        from '../decorators/roles.decorator';
 import { UsuarioAtual } from '../decorators/usuarioAtual.decorator';
@@ -15,6 +15,7 @@ export class PagamentoController {
   ) {}
 
   @Post('mock')
+  @HttpCode(HttpStatus.OK)
   @Roles(Perfil.CLIENTE, Perfil.ATENDENTE)
   @ApiOperation({ summary: 'Processar pagamento via mock' })
   @ApiResponse({ status: 200, description: 'Pagamento processado (aprovado ou recusado).' })

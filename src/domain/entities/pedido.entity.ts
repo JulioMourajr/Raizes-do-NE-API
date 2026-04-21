@@ -35,7 +35,7 @@ export class Pedido {
   @Column({ type: 'enum', enum: StatusPedido, default: StatusPedido.AGUARDANDO_PAGAMENTO })
   status!: StatusPedido;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0, transformer: { to: (v: number) => v, from: (v: string) => parseFloat(v) } })
   total!: number;
 
   @Column({ name: 'forma_pagamento', length: 50 })

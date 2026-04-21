@@ -19,7 +19,7 @@ export class ProcessarPagamentoUseCase {
     private readonly pagamentoRepo: Repository<Pagamento>,
   ) {}
 
-  async executar(dto: ProcessarPagamentoDto, usuarioId: string): Promise<Pagamento> {
+  async executar(dto: ProcessarPagamentoDto, usuarioId: string): Promise<Record<string, unknown>> {
 
     const pedido = await this.pedidoRepo.buscarPorId(dto.pedidoId);
     if (!pedido) {
@@ -69,6 +69,15 @@ export class ProcessarPagamentoUseCase {
       },
     });
 
-    return pagamentoSalvo;
+    return {
+      id:           pagamentoSalvo.id,
+      pedidoId:     pagamentoSalvo.pedidoId,
+      status:       pagamentoSalvo.status,
+      pedidoStatus: pedido.status,
+      transacaoId:  pagamentoSalvo.transacaoId ?? undefined,
+      motivo:       pagamentoSalvo.motivoRecusa ?? undefined,
+      valor:        pagamentoSalvo.valor,
+      createdAt:    pagamentoSalvo.createdAt,
+    };
   }
 }
