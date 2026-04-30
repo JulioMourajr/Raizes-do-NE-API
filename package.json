@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "build": "nest build",
     "start:dev": "nest start --watch",
     "migration:generate": "typeorm-ts-node-commonjs -d typeorm.config.ts migration:generate",
     "migration:run": "typeorm-ts-node-commonjs -d typeorm.config.ts migration:run",
