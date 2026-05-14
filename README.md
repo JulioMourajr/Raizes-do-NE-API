@@ -136,6 +136,51 @@ Swagger disponível em: http://localhost:3000/api/docs
 
 ---
 
+## Executando com Docker
+
+> Pré-requisito: [Docker](https://docs.docker.com/get-docker/) e [Docker Compose](https://docs.docker.com/compose/install/) instalados.
+
+### 1. Suba os containers
+
+```bash
+docker compose up --build
+```
+
+O comando:
+- Constrói a imagem da API (multi-stage build)
+- Sobe um container PostgreSQL 15
+- Aguarda o banco estar pronto
+- Executa todas as migrations automaticamente
+- Popula o banco com os dados iniciais (seed)
+- Inicia a API na porta **3000**
+
+Saída esperada ao final:
+
+```
+raizes-api  | PostgreSQL disponível.
+raizes-api  | Executando migrations...
+raizes-api  | Aplicação rodando em: http://localhost:3000
+raizes-api  | Swagger disponível em: http://localhost:3000/api/docs
+```
+
+### 2. Parar os containers
+
+```bash
+docker compose down
+```
+
+Para remover também o volume do banco (apaga todos os dados):
+
+```bash
+docker compose down -v
+```
+
+### Variáveis de ambiente no Docker
+
+As variáveis já estão definidas no `docker-compose.yml`. Para customizá-las (ex.: trocar senhas em produção), edite a seção `environment` do serviço `api` antes de subir os containers.
+
+---
+
 ## Documentação da API
 
 Acesse o Swagger com a API rodando:
