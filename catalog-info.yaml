@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sabores-NE-API
+  description: API sabores do NE.
+   annotations:
+     github.com/project-slug: JulioMourajr/Raizes-do-NE-API
+spec:
+  type: service
+  owner: platform-team
+  lifecycle: experimental
