@@ -5,6 +5,7 @@ metadata:
   description: API sabores do NE.
   annotations:
     github.com/project-slug: JulioMourajr/Raizes-do-NE-API
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   owner: platform-team

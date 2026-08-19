@@ -1,0 +1,15 @@
+site_name: Raízes do Nordeste — API Back-End
+site_description: Documentação da API Back-End do projeto Raízes do Nordeste
+repo_url: https://github.com/JulioMourajr/Raizes-do-NE-API
+nav:
+  - Início: index.md
+
+plugins:
+  - techdocs-core
+
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
